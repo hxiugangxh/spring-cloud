@@ -11,7 +11,10 @@ public class HystrixClientFallback implements UserFeignClient {
     @Override
     public User findById(Long id) {
         User user = new User();
-        user.setId(0L);
+
+        user.setId(-1L);
+        user.setName("这是fallback");
+
         return user;
     }
 

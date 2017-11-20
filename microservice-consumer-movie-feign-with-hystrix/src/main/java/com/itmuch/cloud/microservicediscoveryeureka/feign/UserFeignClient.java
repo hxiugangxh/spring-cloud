@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @Component
-@FeignClient(name = "microservice-simple-provider-user", fallback = HystrixClientFallback.class)
+@FeignClient(name = "microservice-simple-provider-user", /*fallback = HystrixClientFallback.class, */
+        fallbackFactory = HystrixClientFactory.class)
 public interface UserFeignClient {
     @RequestMapping(value = "/simple/{id}", method = RequestMethod.GET)
     public User findById(@PathVariable("id") Long id);
